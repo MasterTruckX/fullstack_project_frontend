@@ -42,7 +42,7 @@ const Login = () => {
     const userData = {
       email, password
     }
-    dispatch(register(userData))   
+    dispatch(login(userData))   
   }
   
   if(isLoading){

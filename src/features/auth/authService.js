@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API_URL = 'https://tiny-ruby-moth-tux.cyclic.cloud/ouraMovies/users/'
 
-// registrar un usuario
+// ingresar cuenta de un usuario
 const login = async(userData) => {
     const response = await axios.post(API_URL + 'login', userData)
     if (response.data){
