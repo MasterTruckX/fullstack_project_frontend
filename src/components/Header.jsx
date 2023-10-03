@@ -25,8 +25,8 @@ const Header = () => {
                 <ul className="navbar-nav me-auto">
                     {user? (
                     <>
-                      <li>
-                        <button className='btn' onClick={onLogout}>
+                      <li className="nav-item">
+                        <button className='nav-link' onClick={onLogout}>
                             <FaSignOutAlt /> Logout
                         </button>
                       </li>
