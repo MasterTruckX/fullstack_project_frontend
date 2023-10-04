@@ -38,7 +38,7 @@ const deleteMovie = async (token) => {
     return response.data
 }
 
-const tareaService = {
+const movieService = {
     getMovie,
     deleteMovie
 }

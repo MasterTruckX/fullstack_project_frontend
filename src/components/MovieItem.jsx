@@ -1,8 +1,12 @@
-import React from 'react'
+import { useDispatch } from "react-redux"
+import movieService from "../features/movies/movieService"
 
-const MovieItem = () => {
+const MovieItem = ({movie}) => {
+  const dispatch = useDispatch()
   return (
-    <div>MovieItem</div>
+    <div>
+        <h3>{movie.original_title}</h3>
+    </div>
   )
 }
 
