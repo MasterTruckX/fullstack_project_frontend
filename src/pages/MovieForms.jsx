@@ -1,6 +1,9 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
+import { toast } from 'react-toastify'
 import { FaFileUpload } from 'react-icons/fa'
+import { createMovie, reset } from "../features/movies/movieSlice"
+import { useNavigate } from "react-router-dom"
 import Spinner from "../components/Spinner"
 const MovieForms = () => {
   const [formData, setFormData] = useState({
@@ -11,9 +14,17 @@ const MovieForms = () => {
     poster_patch: ''
   })
   const {original_language, original_title, overview, release_date, poster_patch } = formData
-  const {movie} = useSelector((state) => state.movie)
-  const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
+  const {movie, isLoading, isError, isSuccess, message } = useSelector((state) => state.movie)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if(isError) {
+      toast.error(message)
+    }
+    dispatch(reset())    
+    
+  },[isError,message, dispatch])
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -25,15 +36,24 @@ const MovieForms = () => {
   const onSubmit = (e) => {
 
     e.preventDefault()
-
-    // if (password !== password2) {
-    //     toast.error('Passwords are different.')
-    // } else {
-    //     const userData = {
-    //         name, email, password
-    //     }
-    //     dispatch(register(userData))
-    // }
+    if( (original_language==='') || (original_title==='') || (overview==='') || (release_date==='') || (poster_patch==='') ){
+      toast.error('Enter the corresponding info in the empty fields.')
+    }else{
+      const movieData = {
+        original_language, original_title, overview, release_date, poster_patch
+      }
+      dispatch(createMovie(movieData))
+      setFormData(
+        {
+          original_language: '',
+          original_title: '',
+          overview: '',
+          release_date: '',
+          poster_patch: ''
+        }
+      )
+    }
+    
   }
 
   if (isLoading) {
@@ -51,7 +71,7 @@ const MovieForms = () => {
       </section>
 
       <section className="form">
-          <form onSubmit={onSubmit}>
+          <form id='MovieForms' onSubmit={onSubmit}>
               <div className="form-group">
                   <input
                       type="text"
