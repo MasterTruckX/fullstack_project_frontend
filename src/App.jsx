@@ -5,6 +5,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Home from './pages/Home'
 import Header from './components/Header'
+import MovieForms from './pages/MovieForms'
 
 function App() {
   
@@ -17,6 +18,7 @@ function App() {
             <Route path='/' element= {<Home/>}/>
             <Route path='/login' element= {<Login/>}/>
             <Route path='/register' element= {<Register/>}/>
+            <Route path='/forms' element={<MovieForms/>}/>
           </Routes>
         </div>
       </Router>

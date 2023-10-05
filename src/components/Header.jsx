@@ -25,12 +25,24 @@ const Header = () => {
                 <ul className="navbar-nav me-auto">
                     {user? (
                     <>
+                      {user.admin?(
+                        <>
+                          <li className="nav-item">
+                            <Link className="nav-link" to={'/'}>Home</Link>
+                          </li>
+                          <li className="nav-item">
+                            <Link className="nav-link" to={'/forms'}>MovieForms</Link>
+                          </li>
+                        </>
+                      ):(
+                        <div></div>
+                        )
+                      }
                       <li className="nav-item">
                         <button className='nav-link' onClick={onLogout}>
                             <FaSignOutAlt /> Logout
                         </button>
                       </li>
-                      {/* {user.admin?(<div>admin</div>):(<div>No admin</div>)} */}
                     </>
                     ) : (
                     <>
