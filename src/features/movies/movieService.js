@@ -2,17 +2,17 @@ import axios from 'axios'
 
 const API_URL = 'https://tiny-ruby-moth-tux.cyclic.cloud/ouraMovies/movies/'
 
-// //crear una nueva tarea
-// const createTarea = async (tareaData, token) => {
-//     const config = {
-//         headers: {
-//             Authorization: `Bearer ${token}`
-//         }
-//     }
-//     const response = await axios.post(API_URL,tareaData, config)
+//create movie
+const createMovie = async (movieData, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+    const response = await axios.post(API_URL,movieData, config)
 
-//     return response.data
-// }
+    return response.data
+}
 
 //obtener tareas
 const getMovie = async (token) => {
@@ -40,7 +40,8 @@ const deleteMovie = async (id, token) => {
 
 const movieService = {
     getMovie,
-    deleteMovie
+    deleteMovie,
+    createMovie
 }
 
 export default movieService
