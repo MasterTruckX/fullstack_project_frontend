@@ -193,6 +193,65 @@ h3 {
   animation: spin 1.2s linear infinite;
 }
 
+.movies {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 50px;
+}
+
+.overview {
+  overflow: scroll;
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+  /* width: 200px;  */
+  height: 200px;
+}
+
+/* width */
+.overview::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+.overview::-webkit-scrollbar-track {
+  background: #555;
+}
+
+/* Handle */
+.overview::-webkit-scrollbar-thumb {
+  background: #fff;
+}
+
+/* Handle on hover */
+.overview::-webkit-scrollbar-thumb:hover {
+  background: #ccc;
+}
+
+.movie-title {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.images {
+  height: 250px;
+}
+
+.delete {
+  background-color: transparent;
+  border: none;
+  color: #111;
+  float: right;
+}
+.searchbar {
+  margin-top: 25px;
+  width: 1000px;
+  align-content: center;
+  align-items: center;
+  opacity: .5;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);

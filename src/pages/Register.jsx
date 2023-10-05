@@ -46,7 +46,7 @@ const onSubmit = (e) => {
     e.preventDefault()
 
     if (password !== password2) {
-        toast.error('Los passwords no son iguales')
+        toast.error('Passwords are different.')
     } else {
         const userData = {
             name, email, password

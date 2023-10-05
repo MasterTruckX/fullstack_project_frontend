@@ -27,7 +27,7 @@ const getMovie = async (token) => {
 }
 
 //borrar tareas
-const deleteMovie = async (token) => {
+const deleteMovie = async (id, token) => {
     const config = {
         headers: {
             Authorization: `Bearer ${token}`

@@ -17,7 +17,7 @@ const Header = () => {
     <>
         <nav className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
             <div className="container-fluid">
-                <Link className="navbar-brand" to={'/'}>Oura Movies</Link>
+                <div className="navbar-brand">Oura Movies</div>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon" />
                 </button>
@@ -30,6 +30,7 @@ const Header = () => {
                             <FaSignOutAlt /> Logout
                         </button>
                       </li>
+                      {/* {user.admin?(<div>admin</div>):(<div>No admin</div>)} */}
                     </>
                     ) : (
                     <>
@@ -42,10 +43,6 @@ const Header = () => {
                     </>
                     )}
                 </ul>
-                <form className="d-flex">
-                    <input className="form-control me-sm-2" type="search" placeholder="Search" />
-                    <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                </form>
                 </div>
             </div>
         </nav>

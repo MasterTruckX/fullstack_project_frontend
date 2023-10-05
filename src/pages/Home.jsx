@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate} from 'react-router-dom'
 import { useSelector, useDispatch } from "react-redux"
 import Spinner from "../components/Spinner"
@@ -11,6 +11,13 @@ const Home = () => {
   const dispatch = useDispatch()
   const {user} = useSelector((state=> state.auth))
   const {movies, isLoading, isError, message} = useSelector((state)=>state.movie)
+  const [searchTitle, setSearchTitle] = useState('')
+  const filteredTitle = movies.filter(movie => {
+    return movie.original_title.toLowerCase().includes(searchTitle.toLowerCase())
+  })
+  const handleSearch = (event) => {
+    setSearchTitle(event.target.value)
+  }
   
   useEffect(()=>{
     if(isError){
@@ -22,6 +29,9 @@ const Home = () => {
     }else {
       dispatch(getMovie())
     }
+    return ()=>{
+      dispatch(reset())
+    }
   }, [user, navigate, isError, message, dispatch])
 
   if(isLoading){
@@ -30,11 +40,14 @@ const Home = () => {
 
   return (
     <>
-      <section className='content'>
+      <section className='home'>
+        <form>
+          <input className='searchbar' type="search" placeholder="Search" value={searchTitle} onChange={handleSearch}/>
+        </form>
         {movies.length > 0 ? (
-          <div>
-            {movies.map((movie)=>(
-              <MovieItem key={movie._id} movie={movie}/>
+          <div className='movies'>
+            {filteredTitle.map((movie)=>(
+              <MovieItem key={movie._id} movie={movie} user={user}/>
             ))}
           </div>
         ) : (
